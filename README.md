@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Task Manager
 
-Currently, two official plugins are available:
+## Description
+Task Manager is a simple yet powerful web application designed to help users efficiently manage and track their tasks. It allows users to add, edit, delete, and categorize tasks, as well as mark tasks as completed. The project also includes a cron job for marking expired tasks automatically.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation Instructions
 
-## Expanding the ESLint configuration
+To get the Task Manager project up and running locally, follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB (or use MongoDB Atlas)
+- npm (Node package manager)
 
-- Configure the top-level `parserOptions` property like this:
+### Steps
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd task-manager
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Install dependencies**:
+   Run the following command to install the required Node.js packages:
+   ```bash
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory and add the following environment variables:
+   ```
+   MONGO_URI=<your-mongo-db-connection-string>
+   CORS_ORIGIN=<your domain or ip>
+   PORT=8000 or any
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+4. **Start the development server**:
+   Run the application in development mode:
+   ```bash
+   npm start
+   ```
+   The app will be available at `http://localhost:5000`.
+
+5. **Run Cron Jobs**:
+   The cron job for marking expired tasks can be started by running:
+   ```bash
+   npm run cron
+   ```
+
+## Usage
+
+- **Add a Task**: Create a new task by filling in the task title, description, and deadline.
+- **Edit a Task**: Modify an existing task's details.
+- **Delete a Task**: Remove tasks that are no longer needed.
+- **Mark as Completed**: Mark tasks as completed once done.
+- **Task Expiry**: Expired tasks will be automatically marked by the cron job.
+
+### API Endpoints
+- `POST /tasks` - Add a new task.
+- `GET /tasks` - Get all tasks.
+- `GET /tasks/:id` - Get a single task by its ID.
+- `PUT /tasks/:id` - Update a task.
+- `DELETE /tasks/:id` - Delete a task.
+- `PATCH /tasks/:id/complete` - Mark a task as completed.
