@@ -1,24 +1,23 @@
-
-# Task Manager
+ 
+# Task Manager (Frontend)
 
 ## Description
-Task Manager is a simple yet powerful web application designed to help users efficiently manage and track their tasks. It allows users to add, edit, delete, and categorize tasks, as well as mark tasks as completed. The project also includes a cron job for marking expired tasks automatically.
+The Task Manager frontend is a modern web application built using React, Vite, TypeScript, and Redux. It provides an intuitive user interface to manage tasks efficiently. Users can add, edit, delete, mark tasks as completed, and filter tasks based on their status. The frontend communicates with the backend to handle task operations, and state management is handled by Redux.
 
 ## Installation Instructions
 
-To get the Task Manager project up and running locally, follow these steps:
+To set up the Task Manager frontend locally, follow these steps:
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (or use MongoDB Atlas)
+- Node.js (v16 or higher)
 - npm (Node package manager)
 
 ### Steps
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd task-manager
+   git clone https://github.com/RahulSinghkarakoti/taskmanager-frontend.git
+   cd taskmanager-frontend
    ```
 
 2. **Install dependencies**:
@@ -27,39 +26,48 @@ To get the Task Manager project up and running locally, follow these steps:
    npm install
    ```
 
-3. **Set up environment variables**:
-   Create a `.env` file in the root directory and add the following environment variables:
-   ```
-   MONGO_URI=<your-mongo-db-connection-string>
-   CORS_ORIGIN=<your domain or ip>
-   PORT=8000 or any
-   ```
-
-4. **Start the development server**:
-   Run the application in development mode:
+3. **Run the development server**:
+   Start the Vite development server to view the app locally:
    ```bash
-   npm start
+   npm run dev
    ```
-   The app will be available at `http://localhost:5000`.
+   The app will be available at `http://localhost:5173`.
 
-5. **Run Cron Jobs**:
-   The cron job for marking expired tasks can be started by running:
+4. **Build for Production**:
+   To build the app for production, run:
    ```bash
-   npm run cron
+   npm run build
    ```
 
 ## Usage
 
-- **Add a Task**: Create a new task by filling in the task title, description, and deadline.
-- **Edit a Task**: Modify an existing task's details.
-- **Delete a Task**: Remove tasks that are no longer needed.
-- **Mark as Completed**: Mark tasks as completed once done.
-- **Task Expiry**: Expired tasks will be automatically marked by the cron job.
+- **Add a Task**: Users can add a new task by entering the task title, description, and deadline.
+- **Edit a Task**: Modify existing tasks by clicking the edit icon and updating the details.
+- **Delete a Task**: Remove tasks by clicking the delete icon next to the task.
+- **Mark as Completed**: Mark tasks as completed to track finished work.
+- **Filter Tasks**: Filter tasks based on their completion status (All, Completed, Pending).
 
-### API Endpoints
-- `POST /tasks` - Add a new task.
-- `GET /tasks` - Get all tasks.
-- `GET /tasks/:id` - Get a single task by its ID.
-- `PUT /tasks/:id` - Update a task.
-- `DELETE /tasks/:id` - Delete a task.
-- `PATCH /tasks/:id/complete` - Mark a task as completed.
+### State Management with Redux
+The application uses Redux to manage the global state. Actions and reducers are set up to handle task-related operations, such as adding, updating, and deleting tasks.
+
+### Directory Structure
+```
+/src
+  /components    - Reusable UI components
+  /store         - Redux store, actions, and reducers
+  /pages         - Different pages of the app
+  /api           - API calls to the backend
+  App.tsx        - Root component
+  index.tsx      - Application entry point
+```
+
+## Technologies Used
+- **React** - JavaScript library for building user interfaces.
+- **Vite** - Build tool for faster development and bundling.
+- **TypeScript** - A typed superset of JavaScript.
+- **Redux** - State management library for handling global state.
+- **React Router** - For managing routes and navigation.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+ 
