@@ -161,7 +161,7 @@ function Task() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onSave={handleSave}
-          task={task!} // insures task is non empty
+          task={task!} // insures task is non empty or null or undefine
         />
       </div>
       {toast && (
